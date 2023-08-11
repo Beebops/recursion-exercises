@@ -1,6 +1,5 @@
-/** product: calculate the product of an array of numbers. 
-    product([2, 3, 4])   // 24
-*/
+/** product: calculate the product of an array of numbers.
+ */
 
 function product(nums) {
   // base case
@@ -29,11 +28,6 @@ function longest(words, i = 0) {
 }
 
 /** everyOther: return a string with every other letter.
-    expect(everyOther("hello")).toBe("hlo");
-    expect(everyOther("banana stand")).toBe("bnn tn");
-    expect(everyOther("ddoouubbllee")).toBe("double");
-    expect(everyOther("hi")).toBe("h");
-    expect(everyOther("z")).toBe("z");
  */
 
 function everyOther(str, i = 0) {
@@ -66,7 +60,21 @@ function gatherStrings(obj) {}
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
-function binarySearch(arr, val) {}
+function binarySearch(arr, val, low = 0, high = arr.length - 1) {
+  if (low > high) {
+    return -1
+  }
+
+  let mid = Math.floor((low + high) / 2)
+
+  if (arr[mid] === val) {
+    return mid
+  } else if (arr[mid] > val) {
+    return binarySearch(arr, val, low, mid - 1)
+  } else {
+    return binarySearch(arr, val, mid + 1, high)
+  }
+}
 
 module.exports = {
   product,
