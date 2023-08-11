@@ -9,15 +9,11 @@ function product(nums) {
   return nums[0] * product(nums.slice(1))
 }
 
-/** longest: return the length of the longest word in an array of words.
- * longest(["hello", "hi", "hola"]) // 5
- * longest(["abcdefg", "hijklmnop", "qrs", "tuv", "wx", "y", "z"]) // 9
- * longest(["a", "b", "c", "d", "e"]) // 1
- * longest(["abcde"]) // 5
+/** longest: return the length of the longest word in an array of words
  */
 
 function longest(words, i = 0) {
-  // base case --> ["a
+  // base case
   if (words.length === 1) return words[0].length
   // recursive case
   // compare length of first word with length of longest word in array
@@ -32,9 +28,24 @@ function longest(words, i = 0) {
   }
 }
 
-/** everyOther: return a string with every other letter. */
+/** everyOther: return a string with every other letter.
+    expect(everyOther("hello")).toBe("hlo");
+    expect(everyOther("banana stand")).toBe("bnn tn");
+    expect(everyOther("ddoouubbllee")).toBe("double");
+    expect(everyOther("hi")).toBe("h");
+    expect(everyOther("z")).toBe("z");
+ */
 
-function everyOther(str) {}
+function everyOther(str, i = 0) {
+  // base case is if there is only 1 or 2 chars in str
+  if (str.length <= 2) return str[0]
+
+  if (i < str.length) {
+    return str[i] + everyOther(str, i + 2)
+  } else {
+    return ''
+  }
+}
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
