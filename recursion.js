@@ -42,26 +42,35 @@ function everyOther(str, i = 0) {
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not.
- *
- *isPalindrom(tacocat) // true
- isPalindrome("a") // true
- isPalindrome("goodbye") // false
- t = t str[0] === str[str.length -1]
- str[i +1] === str[str.length - 2]
- str[i + 2] === str[str.length -3]
-
  */
 
 function isPalindrome(str, first = 0, last = str.length - 1) {
+  // Base case: All characters have been checked
   if (first >= last) return true
+
+  // If characters at the current positions don't match
   if (str[first] !== str[last]) return false
 
   return isPalindrome(str, first + 1, last - 1)
 }
 
-/** findIndex: return the index of val in arr (or -1 if val is not present). */
+/** findIndex: return the index of val in arr (or -1 if val is not present).
+ */
 
-function findIndex(arr, val) {}
+function findIndex(arr, val, index = 0) {
+  if (index >= arr.length) {
+    // Base case: Entire array has been searched, and item not found
+    return -1
+  }
+
+  if (arr[index] === val) {
+    // Found the item, return its index
+    return index
+  }
+
+  // Recursively search the rest of the array
+  return findIndex(arr, val, index + 1)
+}
 
 /** revString: return a copy of a string, but in reverse. */
 
