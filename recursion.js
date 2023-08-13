@@ -73,11 +73,6 @@ function findIndex(arr, val, index = 0) {
 }
 
 /** revString: return a copy of a string, but in reverse.
- *  abcd -> dcba   bcd + a ->bcda cd + ba -> cdba  d + cba
- *
- *
- * if str is 0 or 1 chars return str
- * remove each char at beginning of str and add it to begining of empty str
  */
 
 function revString(str) {
@@ -88,26 +83,6 @@ function revString(str) {
 }
 
 /** gatherStrings: given an object, return an array of all of the string values.
- * {
-      firstName: "Lester",
-      favoriteNumber: 22,
-      moreData: {
-        lastName: "Testowitz"
-      },
-      funFacts: {
-        moreStuff: {
-          anotherNumber: 100,
-          deeplyNestedString: {
-            almostThere: {
-              success: "you made it!"
-            }
-          }
-    gatherStrings(obj) // ["Lester", "Testowitz", "you made it!", "nice!"]
-    
-    iterate through each property of the object
-    check is the value of the key is a string
-    if its a string, append it to the array
-    if its an object, gatherStrings(value)
  */
 
 function gatherStrings(obj, result = []) {
