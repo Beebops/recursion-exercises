@@ -72,13 +72,56 @@ function findIndex(arr, val, index = 0) {
   return findIndex(arr, val, index + 1)
 }
 
-/** revString: return a copy of a string, but in reverse. */
+/** revString: return a copy of a string, but in reverse.
+ *  abcd -> dcba   bcd + a ->bcda cd + ba -> cdba  d + cba
+ *
+ *
+ * if str is 0 or 1 chars return str
+ * remove each char at beginning of str and add it to begining of empty str
+ */
 
-function revString(str) {}
+function revString(str) {
+  if (str.length <= 1) return str
+  // reverse the rest of the string (excluding the first character)
+  // and concatenate the first character at the end
+  return revString(str.slice(1)) + str[0]
+}
 
-/** gatherStrings: given an object, return an array of all of the string values. */
+/** gatherStrings: given an object, return an array of all of the string values.
+ * {
+      firstName: "Lester",
+      favoriteNumber: 22,
+      moreData: {
+        lastName: "Testowitz"
+      },
+      funFacts: {
+        moreStuff: {
+          anotherNumber: 100,
+          deeplyNestedString: {
+            almostThere: {
+              success: "you made it!"
+            }
+          }
+    gatherStrings(obj) // ["Lester", "Testowitz", "you made it!", "nice!"]
+    
+    iterate through each property of the object
+    check is the value of the key is a string
+    if its a string, append it to the array
+    if its an object, gatherStrings(value)
+ */
 
-function gatherStrings(obj) {}
+function gatherStrings(obj, result = []) {
+  let values = Object.values(obj)
+  console.log(result)
+  for (let value of values) {
+    if (typeof value === 'string') {
+      result.push(value)
+    } else if (typeof value === 'object') {
+      gatherStrings(value, result)
+    }
+  }
+  return result
+}
 
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
